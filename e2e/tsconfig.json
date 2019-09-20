@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "types": [
+      "chai",
+      "mocha"
+    ],
+    "module": "commonjs",
+    "skipLibCheck": true,
+    "inlineSourceMap": true,
+    "declaration": false,
+    "noImplicitAny": false,
+    "rootDir": "protractor",
+    "outDir": "dist",
+    "baseUrl": "./"
+  },
+  "include": [
+    "protractor"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}

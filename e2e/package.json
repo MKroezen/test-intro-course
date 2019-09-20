@@ -2,10 +2,25 @@
   "name": "e2e",
   "version": "1.0.0",
   "description": "Used to test tour of heroes with protractor and mocha",
-  "main": "index.js",
   "scripts": {
-    "test": "test"
+    "tsc": "tsc",
+    "compile": "npm run tsc",
+    "test": "npm run tsc && webdriver-manager update && protractor dist/conf.js"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "chai": "4.2.0",
+    "chai-as-promised": "^7.1.1",
+    "mocha": "6.2.0",
+    "protractor": "5.4.2",
+    "ts-node": "8.4.1",
+    "typescript": "3.6.3"
+  },
+  "devDependencies": {
+    "@types/chai": "4.2.3",
+    "@types/expect": "^1.20.4",
+    "@types/mocha": "^5.2.7",
+    "ts-mocha": "^6.0.0"
+  }
 }

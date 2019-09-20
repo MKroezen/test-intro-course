@@ -1,5 +1,5 @@
 .idea
 .DS_store
-/tour-of-heroes/dist
-/tour-of-heroes/node_modules
+*/node_modules
+*/dist
 

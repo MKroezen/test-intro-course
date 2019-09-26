@@ -1,11 +1,21 @@
-<h2>My Heroes</h2>
+<h2 xmlns="http://www.w3.org/1999/html">My Heroes</h2>
 
 <div>
-  <label>Hero name:
-    <input #heroName />
-  </label>
+  <div>
+    <label>Hero name:
+      <input #heroName/>
+    </label>
+  </div>
+  <div>
+    <label>Favorite:
+      <input #heroFavorite name="favorite" value="true" type="radio"/>
+      <label>yes</label>
+      <input name="favorite" value="false" type="radio"/>
+      <label>no</label>
+    </label>
+  </div>
   <!-- (click) passes input value to add() and then clears the input -->
-  <button (click)="add(heroName.value); heroName.value=''">
+  <button id="add-hero-button" (click)="add(heroName.value); heroName.value=''">
     add
   </button>
 </div>
@@ -13,9 +23,10 @@
 <ul class="heroes">
   <li *ngFor="let hero of heroes">
     <a routerLink="/detail/{{hero.id}}">
-      <span class="badge">{{hero.id}}</span> {{hero.name}}
+      <span class="hero-name-text">{{hero.id}}</span> {{hero.name}}
     </a>
     <button class="delete" title="delete hero"
-      (click)="delete(hero)">x</button>
+            (click)="delete(hero)">x
+    </button>
   </li>
 </ul>

@@ -5,7 +5,7 @@
   "scripts": {
     "tsc": "tsc",
     "compile": "npm run tsc",
-    "test": "rm -r dist && npm run tsc && webdriver-manager update && protractor dist/conf.js"
+    "test": "rm -rf dist && npm run tsc && webdriver-manager update && protractor dist/conf.js"
   },
   "author": "",
   "license": "ISC",

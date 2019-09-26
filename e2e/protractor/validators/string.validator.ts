@@ -11,11 +11,11 @@ export class StringValidator {
         }
     }
 
-    public isEqual(expected: string, actual: string): boolean {
+    public areStringsEqual(expected: string, actual: string): boolean {
         return expected === actual
     }
     
-    public contains(string1: string, string2: string): boolean {
-       return !string1.includes(string2)
+    public doesString1ContainString2(string1: string, string2: string): boolean {
+       return string1.includes(string2)
     }
 }

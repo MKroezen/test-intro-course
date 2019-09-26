@@ -1,13 +1,13 @@
-import {ElementFinder, ExpectedConditions, ProtractorBrowser} from 'protractor';
+import {ElementFinder, ProtractorBrowser} from 'protractor';
 
 export class VisibilityValidator {
     public constructor(private readonly browser: ProtractorBrowser) {
     }
 
     public async throwErrorIfElementIsNotVisible(element: ElementFinder, elementName: string) {
-        this.browser.wait(ExpectedConditions.visibilityOf(element), 2000);
+        this.browser.waitForAngular();
 
-        if(!element.isDisplayed()) {
+        if(!await element.isDisplayed()) {
             throw new Error(`Expected element ${elementName} to be visible`);
         }
     }

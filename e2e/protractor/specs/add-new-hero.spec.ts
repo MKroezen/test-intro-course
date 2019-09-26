@@ -8,7 +8,7 @@ const heroesOverviewPage: HeroesOverviewPage = new HeroesOverviewPage(browser);
 describe('As a user I want to be able to add a new hero', () => {
 
     it('When I visit the application', async () => {
-        browser.get(browser.baseUrl);
+        browser.get('http://localhost:4200');
     });
 
     it(`And I click on the 'heroes' button`, async () => {
@@ -31,5 +31,24 @@ describe('As a user I want to be able to add a new hero', () => {
     
     it('Then that hero should be added to the list of heroes', async () => {
         await heroesOverviewPage.throwErrorIfHeroIsNotInListOfHeroes('IamSomeHero');
+    });
+
+    let amountOfHeroes: number;
+    
+    it('Given there are 10 heroes', async () => {
+        amountOfHeroes = 10;
+    });
+
+    it('When I visit the heroes overview page', async () => {
+        await browser.get('http://localhost:4200/heroes');
+    });
+
+    it('And I add a new hero', async () => {
+        await heroesOverviewPage.addNewHEro('AnotherHero');
+    });
+
+    it('Then the total amount of heroes should be increased', async () => {
+        await heroesOverviewPage.throwErrorIfHeroIsNotInListOfHeroes('AnotherHero');
+        await heroesOverviewPage.throwErrorIfAmountOfHeroesInListDidNotIncrease(amountOfHeroes);
     });
 });

@@ -6,7 +6,7 @@ const dashboardPage: DashboardPage = new DashboardPage(browser);
 describe('As a user I want a working dashboard page', () => {
 
     it('When I visit the dashboard page', async () => {
-        await browser.get(browser.baseUrl);
+        await browser.get('http://localhost:4200');
     });
 
     it('Then I should see the dashboard title and top heroes', async () => {
@@ -15,7 +15,7 @@ describe('As a user I want a working dashboard page', () => {
     });
 
     it('When I visit the dashboard page', async () => {
-        await browser.get(browser.baseUrl);
+        await browser.get('http://localhost:4200');
     });
 
     it('Then I should the dashboard components', async () => {

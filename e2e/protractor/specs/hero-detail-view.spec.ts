@@ -7,28 +7,29 @@ const dashboardPage: DashboardPage = new DashboardPage(browser);
 const heroesOverviewPage: HeroesOverviewPage = new HeroesOverviewPage(browser);
 const heroDetailPage: HeroDetailPage = new HeroDetailPage(browser);
 
-describe('As a user I want to see the details of my hero', function () {
+describe('As a user I want to see and edit the details of my hero', function () {
     it('When I am on the dashboard page', async () => {
-        await browser.get(browser.baseUrl);
-    });
-    
-    it('And I click one of the top heroes', async() => {
-        await dashboardPage.searchAndClickOnTopHero('Bombasto');
-    });
-    
-    it('Then I should see the details of that hero', async() => {
-        
-    });
-    
-    it('When I am on the heroes overview page', async() => {
-        
+        await browser.get('http://localhost:4200');
     });
 
-    it('And select on of the heroes', async() => {
-
+    it('And I click one of the top heroes', async () => {
+        await dashboardPage.clickOnTopHero('Bombasto');
     });
 
-    it('Then I should see the details of that hero', async() => {
+    it('Then I should see the details page', async () => {
+        await heroDetailPage.throwErrorIfHeroesDetailComponentDoesNotExist();
+    });
 
+    it('When I am on the heroes overview page', async () => {
+        await browser.get('http://localhost:4200/heroes');
+    });
+
+    it('And click on one of the heroes', async () => {
+        await heroesOverviewPage.clickOnHeroInList('Bombasto');
+    });
+
+    it('Then I should see the details of that hero', async () => {
+        await heroDetailPage.throwErrorIfHeroesDetailComponentDoesNotExist();
+        await heroDetailPage.throwErrorIfTheNameOfTheHeroDoesNotMatch('Bombasto');
     });
 });

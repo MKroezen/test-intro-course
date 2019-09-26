@@ -8,8 +8,7 @@ export class DashboardPage extends Page {
     private readonly dashboardNavigationButton: ElementFinder = this.browser.element(by.id('dashboard-page-nav-button'));
     private readonly heroesOverviewButton: ElementFinder = this.browser.element(by.id('heroes-overview-nav-button'));
     private readonly titleText: ElementFinder = this.browser.element(by.id('dashboard-title'));
-    private readonly topHeroes: ElementArrayFinder = this.browser.element.all(by.className('top-heroes'));
-
+    private readonly topHeroesElements: ElementArrayFinder = this.browser.element.all(by.className('top-heroes'));
     private readonly messageComponent: ElementFinder = this.browser.element(by.tagName('app-messages'));
     private readonly dashboardComponent: ElementFinder = this.browser.element(by.tagName('app-dashboard'));
 
@@ -21,10 +20,10 @@ export class DashboardPage extends Page {
         await this.heroesOverviewButton.click()
     }
 
-    public async searchAndClickOnTopHero(heroSearched: string): Promise<void> {
-        for (const hero of await this.topHeroes) {
-            if (this.stringValidator.isEqual(await hero.getText(), heroSearched)) {
-                console.log(`Hero ${await hero.getText()} found we should do something`, await hero.getText());
+    public async clickOnTopHero(heroSearched: string): Promise<void> {
+        for (const heroElement of await this.topHeroesElements) {
+            if (this.stringValidator.areStringsEqual(await heroElement.getText(), heroSearched)) {
+                console.log(`Hero: '${await heroElement.getText()}' found! we should do something with it`);
             }
         }
     }
@@ -34,7 +33,7 @@ export class DashboardPage extends Page {
     }
 
     public async failIfExactNumberOfHeroesAreNotBeingDisplayed(number: number): Promise<void> {
-        await this.countValidator.validateNumbersAreEqual(number, await this.topHeroes.count());
+        await this.countValidator.throwErrorIfNumbersAreNotEqual(number, await this.topHeroesElements.count());
     }
 
     public async failIfMessageComponentIsNotVisible(): Promise<void> {

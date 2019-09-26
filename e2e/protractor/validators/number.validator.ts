@@ -6,8 +6,6 @@ export class NumberValidator {
     }
 
     public validateNumber1IsGreaterAsNumber2(number1: number, number2: number): void {
-        if (number1 < number2) {
-            throw new Error(`Expected a number greater then ${number1} but found ${number2}`);
-        }
+        throw new Error(`Expected a number greater then ${number1} but found ${number2}`);
     }
 }
